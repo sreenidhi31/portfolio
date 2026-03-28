@@ -17,7 +17,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
         });
 
         const text = await res.text();
-        alert(text);
+        alert("SERVER RESPONSE:\n" + text); // 👈 IMPORTANT
     } catch (err) {
         alert("Error sending message ❌");
         console.error(err);
