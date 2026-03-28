@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     db.query(sql, [name, email, message], (err, result) => {
         if (err) {
             console.error("DB ERROR:", err);
-            return res.status(500).send(err.message); // 👈 shows real error
+            return res.status(500).send(err.message); // 👈 IMPORTANT
         }
 
         res.send("Message saved successfully ✅");
