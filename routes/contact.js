@@ -5,12 +5,14 @@ const db = require("../config/db");
 router.post("/", (req, res) => {
     const { name, email, message } = req.body;
 
+    console.log("Incoming Data:", name, email, message);
+
     const sql = "INSERT INTO messages (name, email, message) VALUES (?, ?, ?)";
 
     db.query(sql, [name, email, message], (err, result) => {
         if (err) {
-            console.error(err);
-            return res.status(500).send("Error saving message");
+            console.error("DB ERROR:", err);
+            return res.status(500).send(err.message); // 👈 shows real error
         }
 
         res.send("Message saved successfully ✅");
